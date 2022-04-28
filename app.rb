@@ -7,14 +7,22 @@ require 'player'
 require 'boardcase'
 require 'board'
 
-cycle = true
-while cycle
+
+
+def Perform
   system "clear"
   my_game = Game.new
-  system "clear"
-  my_game.refresh_board
-  my_game.turn_play
-  my_game.next_game ? cycle : cycle = false
-  system "clear"
-  my_game.reset_game
+  my_game.start_first_game
+  cycle = true
+  while cycle
+    system "clear"
+    my_game.refresh_board
+    turn = my_game.who_begin
+    my_game.turn_play(turn)
+    my_game.next_game ? cycle : cycle = false
+    system "clear"
+    my_game.reset_game
+  end
 end
+
+perform()

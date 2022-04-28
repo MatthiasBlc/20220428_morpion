@@ -1,8 +1,12 @@
 class Game
 
+  @@number_of_games = 0
   def initialize
     @my_board = Board.new
-
+    
+  end
+  
+  def start_first_game
     #player 1 init
     puts "Player 1 name ? "
     print ">"
@@ -28,9 +32,9 @@ class Game
       player_2_symbol == player_1_symbol ? (puts "Already taken by #{player_1_name}, choose another symbol"; print'>') : symbol_nok = false
     end
     @player_2 = Player.new(player_2_name, player_2_symbol)
-
   end
   
+
   def display_board
     @my_board.display_board
   end
@@ -44,29 +48,47 @@ class Game
     self.display_board
   end
 
-  def turn_play
+  def who_begin
+    turn = rand(0..1)
+    if turn == 0
+      puts "#{@player_1.player_name} will begin the game"
+    else
+      puts "#{@player_2.player_name} will begin the game"
+    end
+    return turn
+  end
+
+
+  def turn_play(turn)
+    if turn == 0
+      a = @player_1
+      b = @player_2
+    else
+      a = @player_2
+      b = @player_1
+    end
     # player 1 play
-    puts "#{@player_1.player_name} a toi de jouer"
-    player_play(@player_1)
-     self.refresh_board
-     if self.is_winner(@player_1) 
-      return puts "#{@player_1.player_name} gagne la partie."
+    puts "#{a.player_name} a toi de jouer"
+    player_play(a)
+    self.refresh_board
+    if self.is_winner(a) 
+      return puts "#{a.player_name} gagne la partie."
     end
     if self.is_equal
             return puts"égalité parfaite"
     end
     
     # player 2 play
-    puts "#{@player_2.player_name} a toi de jouer"
-    player_play(@player_2)
+    puts "#{b.player_name} a toi de jouer"
+    player_play(b)
     self.refresh_board
-    if self.is_winner(@player_2)
-      return puts "#{@player_2.player_name} gagne la partie."
+    if self.is_winner(b)
+      return puts "#{b.player_name} gagne la partie."
     end
     if self.is_equal
       return "égalité parfaite"
     end
-    turn_play()
+    turn_play(turn)
   end
 
   def is_winner(player)
@@ -123,6 +145,7 @@ class Game
     BoardCase.all_board_list.clear
     Board.all_brain_list.clear
     Board.start_board
+    @@number_of_games += 1
   end
 
 end

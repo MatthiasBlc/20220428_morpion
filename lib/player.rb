@@ -13,8 +13,8 @@ attr_accessor :player_name, :player_symbol
     puts '>'
     input = gets.chomp
     if @check_list.include?(input)
-    Board.all_brain_list.each {|element| 
-      if element.case_name == input.upcase 
+    Board.all_brain_list.each {|element|
+      if element.case_name == input.upcase
         if element.content == ' '
           element.content = @player_symbol
         else
@@ -29,6 +29,5 @@ attr_accessor :player_name, :player_symbol
     end
     # MANQUE UNE SECURITE POUR LES INPUTS RANDOMS
   end
-  
 
 end
