@@ -9,7 +9,7 @@ require 'board'
 
 
 
-def Perform
+def perform
   system "clear"
   my_game = Game.new
   my_game.start_first_game
