@@ -6,26 +6,16 @@ require 'game'
 require 'player'
 require 'boardcase'
 require 'board'
-# require 'header'
 
-# #Board.new().display_board
-# myplayer = Player.new("Paul")
-# myplayer.choose_case("A")
+cycle = true
+while cycle
+  my_game = Game.new
 
-
-#############################################
-
-# casetest = BoardCase.new("a1")
-# player1 = Player.new('Francis','O')
-
-
-# puts casetest.content
-
-# puts casetest.fill_the_case(player1.player_symbol)
-
-
-#############################################
-
-my_game = Game.new
-
-my_game.display_board
+  system "clear"
+    my_game.refresh_board
+  # testistrue = true
+    my_game.turn_play
+    my_game.next_game ? cycle : cycle = false
+    system "clear"
+    my_game.reset_game
+end
