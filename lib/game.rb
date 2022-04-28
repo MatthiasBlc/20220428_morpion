@@ -36,10 +36,7 @@ class Game
   end
 
   def player_play(player)
-    
     player.change_symbol
-
-    
   end
   
   def refresh_board
@@ -48,7 +45,6 @@ class Game
   end
 
   def turn_play
-
     # player 1 play
     puts "#{@player_1.player_name} a toi de jouer"
     player_play(@player_1)
@@ -109,8 +105,6 @@ class Game
     end
   end
   
-
-
   def next_game
     puts 'Do you want to play another game ?(y/n)'
     print '>'
@@ -130,10 +124,5 @@ class Game
     Board.all_brain_list.clear
     Board.start_board
   end
-
-
-  # def start_game
-    
-  # end
 
 end

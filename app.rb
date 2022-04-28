@@ -9,13 +9,12 @@ require 'board'
 
 cycle = true
 while cycle
-  my_game = Game.new
-
   system "clear"
-    my_game.refresh_board
-  # testistrue = true
-    my_game.turn_play
-    my_game.next_game ? cycle : cycle = false
-    system "clear"
-    my_game.reset_game
+  my_game = Game.new
+  system "clear"
+  my_game.refresh_board
+  my_game.turn_play
+  my_game.next_game ? cycle : cycle = false
+  system "clear"
+  my_game.reset_game
 end

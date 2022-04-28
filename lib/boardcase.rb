@@ -7,7 +7,6 @@ class BoardCase
   def initialize(case_name)
     @case_name = case_name
     @content = ' '
-
     @@board_case_list << self
   end
 
